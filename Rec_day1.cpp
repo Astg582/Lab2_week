@@ -1,4 +1,6 @@
 #include <iostream>
+int fib(int);
+int fact(int);
 int searc(int arr[], int, int, int );
 void byn(int);
 int art(int);
@@ -11,12 +13,31 @@ int main(){
 	int key = 0;
 	const int s = 10;
 	int arr[s];
+/*	
 	for(int i = 0; i < s; ++i){ 
 		std::cin >> arr[i];
 	}
-	std::cout << max(arr, s) << std::endl;
+*/
+	std::cin >> key;
+	std::cout << fact(key) << std::endl;
 	//std::cout << searc(arr, 0, s - 1, key) << std::endl;
 
+}
+
+int fib(int n){
+	if( n == 0){
+		return 0;
+	}else if(n == 1){
+		return 1;
+	}
+	return fib(n - 1) + fib(n - 2);
+}
+
+int fact(int n){
+	if(n == 0){
+		return 1;
+	}
+	return n * fact(n - 1);
 }
 
 int min(int arr[], int s){
