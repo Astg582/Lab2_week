@@ -1,6 +1,6 @@
 #include <iostream>
 
-const int s = 10;
+const int s = 11;
 void m_circul(int arr[][s], int);
 void print(int arr[][s], int);
 
@@ -17,23 +17,18 @@ int main(){
 
 void m_circul(int arr[][s], int s){
 	for(int i = 0; i < s; ++i){
-		for(int j = i; j < s - i; ++j){
-			if(i <= s/2 && !(i & 1)){
+		for(int j = i; j < s - i && i <= s/2 && !(i & 1); ++j){
+			arr[i][j] = 0;
+			arr[j][i] = 0;
+		}
+		for(int j = s - i - 1; j < s && i >= s - j - 1; ++j){
+			if((s & 1) && !(j & 1) && j >= i){
+				arr[i][j] = 0;
+				arr[j][i] = 0;
+			}else if(!(s & 1) && (j & 1) && j >= i){
 				arr[i][j] = 0;
 				arr[j][i] = 0;
 			}
-		}
-		for(int j = s - i - 1; j < s; ++j){
-			if(i >= s - j - 1 && j >= i){
-				if((s & 1) && !(j & 1)){
-					arr[i][j] = 0;
-					arr[j][i] = 0;
-				}else if(!(s & 1) && (j & 1)){
-					arr[i][j] = 0;
-					arr[j][i] = 0;
-				}
-			}
-			
 		}	
 	}
 }
