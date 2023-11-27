@@ -30,10 +30,10 @@ int main(){
 
 	return 0;
 }	
-/*
+
 int calculator(int a, int b){
 	int cal = 0;
-	printf("1. AND, \n2. OR \n3. XOR \n4. NOR \n5. Left Shift \n6. Right shift \n7. Replay \n");
+	printf("1. AND, \n2. OR \n3. XOR \n4. NOR \n5. Left Shift \n6. Right shift \n7. Replay \n8. Exit");
 	do{
 		scanf("%d", &cal);
 		if(cal < 1 || cal > 7){
@@ -56,6 +56,8 @@ int calculator(int a, int b){
 		return a >> b;
 		case 7:
 		return main();
+                case 8:
+		exit(0);
 	}
 
 	return 0;
