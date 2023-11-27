@@ -117,38 +117,54 @@ void count(int dec){
 	}
 }
 
-*/
+
 
 int bin_dec(char* bin1){
 	int a = 0;
 	bin1 += 2;
 	int i = 1;
-	int s = 0;
 	int j = 0;
 	while(bin1[j] != '\0'){
-		++s;
 		++j;
 	}
 	while(*bin1 != '\0'){ 
-			a += (int)(*bin1 - '0') * (pow(2,s - i));
+			a += (int)(*bin1 - '0') * (1 << (j - i));
 			bin1 += 1;
 			++i;
 	}
 	return a;
 }
 
+bool if_bin(char* bin){
+        if(*bin != '0' || *(bin +1) != 'b'){
+                       return 0;
+         }
+	bin += 2;
+	while(*bin != '\0'){
+                       if(*bin < '0' || *bin > '1'){
+                                       return 0;
+		       }
+                       bin += 1;
+	}
+	return 1;
+}
 
 bool if_hex(char* hex1){
-	if(*hex1 == '0' && *hex1 == 'x'){
-		hex1 += 2;
+	if(*hex1 != '0' || (*hex1 + 1) != 'x'){
+		return 0;
 	}
+	hex1 += 2;
 	while(*hex1 != '\0'){
-		if(*hex1 < 0 && *hex1 > 9){
-			if(*hex1 < 'A' && *hex1 > 'F'){
+		if(*hex1 < 0){
+                       return 0;
+                }
+	        if(*hex1 > 9){
+			if(*hex1 < 'A' || *hex1 > 'F'){
 				return 0;
-			}  
-	}
-}
+			}
+	         }
+	         hex1 += 1;
+         }
 return 1;
 }
 
